@@ -1,2 +1,3 @@
-# kShield
-kShield is a Linux kernel privilege escalation attack defense system based on eBPF.
+# Clarification
+
+When the paper is accepted, the full source code of the kShield framework will be uploaded in the GitHub repository. 
