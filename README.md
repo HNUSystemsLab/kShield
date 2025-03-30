@@ -82,7 +82,7 @@ We collected vulnerabilities and their exploit existing in real systems from Git
 **For each exploit listed in the table, we:**
 
 1. **Reproduced the collected exploits** to verify their functionality. Testing confirmed that all 19 exploits mentioned in this paper can successfully trigger the vulnerabilities, carry out attacks, and escalate privileges from a regular user to ROOT.
-2. **Deployed kShield in the functional testing environment**, and then launched the attacks using the aforementioned exploits. Testing demonstrated that kShield successfully mitigated all attacks. We have recorded a comparison video showing the system before and after kShield deployment. Please refer to this [link](https://drive.google.com/drive/folders/12LLyRELEaQzdKJkEvsaeH3gB85PN4v_p?usp=drive_link).
+2. **Deployed kShield in the functional testing environment**, and then launched the attacks using the aforementioned exploits. Testing demonstrated that kShield successfully mitigated all attacks. 
 
 To begin with, download the root file system for functional testing from this [link](https://drive.google.com/file/d/1cv7geSOpTeqLo9jR1Ee50uZy6S93tSFm/view?usp=drive_link), and place it in the `./1-func-test/Launch-Func-Test/` directory.
 
@@ -153,7 +153,7 @@ The provided testcases include:
 
 ![](./figs/dataset.png)
 
-**See this [link](https://drive.google.com/file/d/1JsUlEZMvFIp_0w7kJIUTGPBFNOzhANMD/view?usp=drive_link) for a full test result.**
+We have recorded a comparison video showing the system before and after kShield deployment. Please refer to this [link](https://drive.google.com/drive/folders/12LLyRELEaQzdKJkEvsaeH3gB85PN4v_p?usp=drive_link).
 
 ## Performance Test
 
