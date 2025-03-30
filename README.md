@@ -1,10 +1,5 @@
 # KShield
 
-> **TODO**
->
-> - Fix the performance test section (directory issue in scripts).
-> - Attempt to create a Docker image to package both the functional and performance test environments.
-
 **Our paper:** kShield: An eBPF Runtime Defense Framework for Linux Kernel Privilege Escalation Attacks
 
 - `1-func-test`: Validating the effectiveness of kShield's defense mechanisms
@@ -15,17 +10,70 @@
 
 This guide outlines the procedures for both functional and performance testing of kShield.
 
-## Set up
+## Prerequisites
 
-To begin, ensure that the following software and testing suites are installed:
+**For functional test:**
 
 - qemu 7.0.0
-- python 3.9+
 - open-ssh
+
+**For quickstart and performance test:**
+
+- Kernel debug symbol (`vmlinux-$(uname -r)`) under `/boot` directory
+- Kernel Headers (under `/lib/modules` directory)
+- BTF type information
+- python 3.9+
 - Phoenix-Test-Suite 10.8.5
 - Lmbench3
 
-Next, download the root file system for functional testing from this [link](https://drive.google.com/file/d/1cv7geSOpTeqLo9jR1Ee50uZy6S93tSFm/view?usp=drive_link), and place it in the `./1-func-test/Launch-Func-Test/` directory.
+## Quickstart
+
+#### Using docker
+
+Try kShield with the command below:
+
+```bash
+docker run --name kshield -it --rm \
+	--pid=host --cgroupns=host --privileged \
+	-v /lib/modules/$(uname -r)/build:/lib/modules/$(uname -r)/build \
+	-v /sys/kernel/tracing:/sys/kernel/tracing \
+	-v /boot:/boot \
+	boying4324/kshield:latest [Arguments]
+```
+
+| Argument  | Usage                                    |
+| --------- | ---------------------------------------- |
+| `--help`  | Print the help list                      |
+| `-e[NUM]` | specify enabled events (NUM = 0,1,2,3,4) |
+| `-a`      | trace all 5 events                       |
+
+#### Compile and run
+
+Install dependencies
+
+```bash
+apt-get update && apt-get install -y --no-install-recommends \
+      clang \
+      libelf1 \
+      libelf-dev \
+      zlib1g-dev \
+      binutils \
+      make \
+      llvm \
+      build-essential \
+```
+
+Enter the source code directory
+
+```bash
+cd ./kShield/3-source-code/v0.01/src/libbpf-bootstrap/
+```
+
+Compile
+
+```bash
+make all 
+```
 
 ## Functional Test
 
@@ -35,6 +83,8 @@ We collected vulnerabilities and their exploit existing in real systems from Git
 
 1. **Reproduced the collected exploits** to verify their functionality. Testing confirmed that all 19 exploits mentioned in this paper can successfully trigger the vulnerabilities, carry out attacks, and escalate privileges from a regular user to ROOT.
 2. **Deployed kShield in the functional testing environment**, and then launched the attacks using the aforementioned exploits. Testing demonstrated that kShield successfully mitigated all attacks. We have recorded a comparison video showing the system before and after kShield deployment. Please refer to this [link](https://drive.google.com/drive/folders/12LLyRELEaQzdKJkEvsaeH3gB85PN4v_p?usp=drive_link).
+
+To begin with, download the root file system for functional testing from this [link](https://drive.google.com/file/d/1cv7geSOpTeqLo9jR1Ee50uZy6S93tSFm/view?usp=drive_link), and place it in the `./1-func-test/Launch-Func-Test/` directory.
 
 To perform an provided functional test, first start the test VM:
 
@@ -68,11 +118,15 @@ Run the exploit directly and observe whether privilege escalation is successfull
 
 ```bash
 # Enter the exploit directory
-cd ./exp/dirtycred/CVE-2021-4154
+cd ./exp/rop/CVE-2022-1015
 
 # directly run the exploit
-./exploit-2021-4154
+./exploit-2022-1015
 ```
+
+**Video Demo:**
+
+[![Watch the demo](https://img.youtube.com/vi/QqEbYsvsCRc/0.jpg)](https://youtu.be/QqEbYsvsCRc)
 
 **Test 2:**
 
@@ -85,27 +139,31 @@ After deploying kShield, run the exploit again and observe whether privilege esc
 sudo ./kprobe -e{event_num}
 
 # Enter the exploit directory
-cd ./exp/dirtycred/CVE-2021-4154
+cd ./exp/rop/CVE-2022-1015
 
 # run the exploit
-./exploit-2021-4154
+./exploit-2022-1015
 ```
 
-The test workflow is demonstrated in the picture below:
+**Video Demo:**
 
-<img src="figs/func-test.png" style="zoom:50%;" />
+[![Watch the demo](https://img.youtube.com/vi/-DZeA90lPR8/0.jpg)](https://youtu.be/-DZeA90lPR8)
 
 The provided testcases include:
 
 ![](./figs/dataset.png)
 
-
+**See this [link](https://drive.google.com/file/d/1JsUlEZMvFIp_0w7kJIUTGPBFNOzhANMD/view?usp=drive_link) for a full test result.**
 
 ## Performance Test
 
-The performance tests are conducted on the host machine, aiming to evaluate the additional overhead introduced by kShield. The tests consist of two parts: micro-benchmarking and macro-benchmarking.
+The performance tests are conducted on the **host machine**, aiming to evaluate the additional overhead introduced by kShield. The tests consist of two parts: micro-benchmarking and macro-benchmarking.
 
-**Start the performance test：**
+(1) Install `phoronix-test-suite` and `lmbench-3.0-a9`
+
+(2) Place the two folders (i.e. `phoronix-test-suite` and `lmbench-3.0-a9`) at `./2-performance-test/`
+
+(3) Start the performance test with scripts
 
 ```bash
 # swith to CPU performance mode 
