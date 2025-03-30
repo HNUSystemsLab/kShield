@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#cd /home/boying/文档/security-ebpf/scripts
 #sudo python3 phoronix-run.py evaluation-vanilla
 #sleep 10
 

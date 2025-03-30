@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # vanilla
-cd /home/boying/lmbench-3.0-a9 && make rerun | tr -d '\n'
-cd /home/boying/文档/security-ebpf/scripts
+cd ./lmbench-3.0-a9 && make rerun | tr -d '\n'
 sleep 10
 
 # 6 tests
