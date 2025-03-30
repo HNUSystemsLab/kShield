@@ -25,7 +25,7 @@ struct env env = {{0}, 0};
 const char *argp_program_version = "secure-ebpf 0.0";
 const char *argp_program_bug_address = "<boyingc963@gmail.com>";
 const char argp_program_doc[] =
-"This poject is a kernel runtime security enforcement based on eBPF. It traces 3 kinds of security events and kill pontenial evil process.\n"
+"This poject is a kernel runtime security enforcement based on eBPF. It traces 5 kinds of security events and kill pontenial evil process.\n"
 "\n"
 "EVENT 0: CFI_VIOLATION. It implements control flow integrity based on eBPF.\n"
 "EVENT 1: TASK_CRED_OVERWRITTEN. It checks illegal task cred modification.\n"
@@ -38,7 +38,7 @@ const char argp_program_doc[] =
 
 static const struct argp_option opts[] = {
 	{ "event", 'e', "NUM", 0, "specify enabled events" },
-	{ "all", 'a', NULL, 0, "trace all 4 events" },
+	{ "all", 'a', NULL, 0, "trace all 5 events" },
 	{},
 };
 
