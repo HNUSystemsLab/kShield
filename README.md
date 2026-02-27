@@ -75,6 +75,16 @@ Compile
 make all 
 ```
 
+## Statistical Analysis of Publicly Available Exploits
+
+To ensure kShield mitigates prevalent real-world threats, we systematically collected functional Linux kernel privilege escalation exploits publicly released on GitHub from January 2020 to early 2025. This multi-granularity search yielded a comprehensive dataset covering both Control Data Attacks (e.g., ROP) and Non-Control Data Attacks (e.g., DirtyCred, `modprobe_path` manipulation), which drives our evaluation and defense design. 
+<img src="./figs/attack_vector_distribution.png" style="zoom:15%;" />
+
+For transparency and to facilitate future research, our complete exploit tracking results are publicly available:
+
+- [Coarse-grained Exploit Collection Data](https://docs.google.com/spreadsheets/d/1yehQnvRGGu4Cw4nrTmNDF228zIwbEYmkc_KOqTwjXTg)
+- [Fine-grained CVE Review (2020-2025)](https://docs.google.com/spreadsheets/d/106PiiCCUNv2OijrR1mlHqk0ln4GDbgJy89Jwjjft4YE)
+
 ## Functional Test
 
 We collected vulnerabilities and their exploit existing in real systems from GitHub and CVE platform to evaluate the effectiveness of kShield. The used exploits are listed [here](./1-func-test/Tested-Exploit-List.xlsx). 
