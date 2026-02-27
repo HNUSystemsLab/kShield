@@ -153,7 +153,7 @@ The provided testcases include:
 
 ![](./figs/dataset.png)
 
-We have recorded a comparison video showing the system before and after kShield deployment. Please refer to this [link](https://drive.google.com/drive/folders/12LLyRELEaQzdKJkEvsaeH3gB85PN4v_p?usp=drive_link).
+We have recorded a comparison video showing the system before and after kShield deployment. Please refer to this [link](https://drive.google.com/drive/folders/12LLyRELEaQzdKJkEvsaeH3gB85PN4v_p?usp=sharing).
 
 ## Performance Test
 
