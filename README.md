@@ -84,7 +84,7 @@ We collected vulnerabilities and their exploit existing in real systems from Git
 1. **Reproduced the collected exploits** to verify their functionality. Testing confirmed that all 19 exploits mentioned in this paper can successfully trigger the vulnerabilities, carry out attacks, and escalate privileges from a regular user to ROOT.
 2. **Deployed kShield in the functional testing environment**, and then launched the attacks using the aforementioned exploits. Testing demonstrated that kShield successfully mitigated all attacks. 
 
-To begin with, download the root file system for functional testing from this [link](https://drive.google.com/file/d/1cv7geSOpTeqLo9jR1Ee50uZy6S93tSFm/view?usp=drive_link), and place it in the `./1-func-test/Launch-Func-Test/` directory.
+To begin with, download the root file system for functional testing from this [link](https://drive.google.com/file/d/1cv7geSOpTeqLo9jR1Ee50uZy6S93tSFm/view?usp=sharing), and place it in the `./1-func-test/Launch-Func-Test/` directory.
 
 To perform an provided functional test, first start the test VM:
 
