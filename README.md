@@ -2,9 +2,11 @@
 
 **Our paper:** kShield: An eBPF Runtime Defense Framework for Linux Kernel Privilege Escalation Attacks
 
-- `1-func-test`: Validating the effectiveness of kShield's defense mechanisms
-- `2-performance-test`: Measuring the overhead introduced by kShield on the host system using benchmark tests
-- `3-source-code`: Implementation details
+- `1-func-test`: Validating the effectiveness of kShield's defense mechanisms.
+- `2-performance-test`: Measuring the overhead introduced by kShield on the host system using benchmark tests.
+- `3-source-code`: Implementation details.
+- `4-CVE-data`: CVE data collected from diverse online repositories. In addition, online spreadsheets, such as:
+  [Collections](https://docs.google.com/spreadsheets/d/1yehQnvRGGu4Cw4nrTmNDF228zIwbEYmkc_KOqTwjXTg) and [CVE-from-2020-to-2025](https://docs.google.com/spreadsheets/d/106PiiCCUNv2OijrR1mlHqk0ln4GDbgJy89Jwjjft4YE)
 
 ## Abstract
 
